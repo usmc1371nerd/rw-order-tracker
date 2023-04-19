@@ -15,3 +15,7 @@ const Login = () => {
 }
 
 export default Login
+
+// can be either employee or customer at start 
+// eventually need to change to employee or customer login
+
