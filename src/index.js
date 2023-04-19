@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter} from "react-router-dom";
 import './index.css';
-import App from './App';
+import App from './App.js'
 import {AuthProvider} from "react-auth-kit"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider
     authType='cookie'
     authName='_auth'
     cookieDomain={window.location.hostname}
-    cookieSecure
-     />
+    cookieSecure={false} 
+     >  
+     <BrowserRouter>
+      <App/>
+     </BrowserRouter>
+    
+     </AuthProvider>
+     
+   
+
   </React.StrictMode>
 );
+// make sure you change cookieSecure when using https to true
