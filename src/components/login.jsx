@@ -26,7 +26,7 @@ const Login = () => {
 <button type='submit' >Login</button>
 <div className="register">
 
-Not registered yet? <a href="./register.jsx">Register</a>
+Not registered yet? <a href="./register">Register</a>
 
 </div>
 
