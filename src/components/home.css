@@ -1,6 +1,12 @@
 .title{
+    margin-top: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height:100vh;
+  
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
 }

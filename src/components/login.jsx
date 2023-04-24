@@ -1,12 +1,14 @@
 import React from 'react'
-import Header from './header'
+
 
 const Login = () => {
   return (
     <div>
-      <Header/>
-      
+ 
+ <a href="/"><button>Home</button></a>   
+ 
 <h1>Login</h1>
+
       
     
     
