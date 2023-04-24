@@ -1,8 +1,14 @@
 import React from 'react'
+import Header from './header'
 
 const OrderForm = () => {
   return (
-    <div><h1>order-form</h1></div>
+    <div>
+      <Header/>
+      
+      <h1>order-form</h1>
+    
+    </div>
   )
 }
 

@@ -1,0 +1,17 @@
+button {
+    height:25px;
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+.links {
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 10vh;
+    border: 2px solid black;
+    align-items: center;
+}
+
+
