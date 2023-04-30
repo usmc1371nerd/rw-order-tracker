@@ -20,7 +20,7 @@
         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='email' id='email'></input>
         <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" placeholder='password' id='password'></input>
         <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" placeholder='password' id='password'></input>
-        <button type='submit' >Login</button>
+        <button type='submit' >Create</button>
         </form>
    </div>
    )

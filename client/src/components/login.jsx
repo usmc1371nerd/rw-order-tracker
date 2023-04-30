@@ -1,54 +1,42 @@
-import React from 'react'
-import { useState} from "react"
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const handleSubmit = (e) => {  
-    e.preventDefault();
-    console.log(email);
-    console.log(password);
-  
-  
-  }
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/login', {username, password})
+
+      .then(response => {
+        // handle the successful login here
+        console.log(response);
+        history('/');
+      })
+      .catch(error => {
+        // handle the login error here
+        console.log(error);
+      });
+  };
 
   return (
-    <div>
- 
- <a href="/"><button>Home</button></a>   
+    <form onSubmit={handleLogin}>
+      <label>
+        Username:
+        <input type="text" name="username" value={username} onChange={e => setUsername(e.target.value)} />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Login</button>
+    </form>
+  );
+};
 
-<h1>Login</h1>
-<form onSubmit={handleSubmit}>
-<input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='email' id='email'></input>
-<input value={password} onChange={(e) => setPassword(e.target.value)}type="password" placeholder='password' id='password'></input>
-<button type='submit' >Login</button>
-<div className="register">
-
-Not registered yet? <a href="./register">Register</a>
-
-</div>
-
-
-
-
-
-</form>
-
-      
-    
-    
-    
-    </div>
-  
-  )
-}
-
-export default Login
-
-// can be either employee or customer at start 
-// eventually need to change to employee or customer login
-//or add employee or customer model to datadase and it can check and return status
-
-
+export default Login;
