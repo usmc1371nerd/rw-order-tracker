@@ -1,10 +1,18 @@
 import React from 'react'
 import './home.css'
+import Username from './username'
+import Login from './login'
+import { useState } from 'react'
 
-const home = () => {
+const home = (props) => {
+  const isLoggedIn = props.username ? true : false;
+
   return (
+   
     <div>
-        
+         <div>
+         {isLoggedIn ? <Username username={props.username} />: <p></p>}
+      </div>
         <div className="title">
        <h1>Welcome to R&W Wholesale please login </h1> 
        </div>

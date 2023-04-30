@@ -11,12 +11,13 @@ import { Route, Routes} from 'react-router';
 
 
 function App() {
+  const username = "JohnDoe";
   return (
   
    
     <Routes>
       
-        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/' element={<Home username={username}/>}/>
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/order-form' element={<Order/>}/>
         <Route exact path='/register' element={<Register/>}/>
