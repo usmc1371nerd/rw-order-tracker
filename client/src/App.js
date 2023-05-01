@@ -4,6 +4,7 @@ import Login from "./components/login"
 import Order from "./components/order-form"
 import Home from "./components/home"
 import Register from "./components/register"
+import Logout from './components/logout';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/order-form' element={<Order username={username}/>}/>
         <Route exact path='/register' element={<Register/>}/>
+        <Route exact path='/logout' element={<Logout/>}/>
         
       
      
