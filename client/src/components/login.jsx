@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+
+const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const history = useNavigate();
+
+  console.log(username)
+  console.log(password)
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,8 +17,8 @@ const Login = () => {
 
       .then(response => {
         // handle the successful login here
-        console.log(response);
-        history('/');
+        console.log("logged in successfully");
+        history(`/order-form?username=${username}`);
       })
       .catch(error => {
         // handle the login error here
@@ -23,6 +27,9 @@ const Login = () => {
   };
 
   return (
+    <div>
+ 
+   
     <form onSubmit={handleLogin}>
       <label>
         Username:
@@ -36,6 +43,7 @@ const Login = () => {
       <br />
       <button type="submit">Login</button>
     </form>
+    </div>
   );
 };
 

@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-import Login from "../src/components/login"
-import Order from "../src/components/order-form"
-import Home from "../src/components/home"
-import Register from "../src/components/register"
+import Login from "./components/login"
+import Order from "./components/order-form"
+import Home from "./components/home"
+import Register from "./components/register"
 
 
-import { Route, Routes} from 'react-router';
+
+import { Route, Routes, useLocation} from 'react-router';
 
 
 
 function App() {
-  const username = "JohnDoe";
+  const location = useLocation();
+  const username = new URLSearchParams(location.search).get('username');
   return (
   
    
@@ -19,7 +21,7 @@ function App() {
       
         <Route exact path='/' element={<Home username={username}/>}/>
         <Route exact path='/login' element={<Login/>}/>
-        <Route exact path='/order-form' element={<Order/>}/>
+        <Route exact path='/order-form' element={<Order username={username}/>}/>
         <Route exact path='/register' element={<Register/>}/>
         
       

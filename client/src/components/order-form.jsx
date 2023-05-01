@@ -1,10 +1,10 @@
 import React from 'react'
 
-const OrderForm = () => {
+const OrderForm = ({username}) => {
   return (
     <div>
            
-      <h1>order-form</h1>
+      <h1>Welcome {username} </h1>
       <a href="/"><button>Home</button></a>
     
     </div>
