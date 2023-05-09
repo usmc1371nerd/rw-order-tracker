@@ -5,6 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 function Header(props) {
   const navigate = useNavigate();
 
+
+
+
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     props.setLoggedIn(false);
@@ -21,26 +25,28 @@ function Header(props) {
       </div>
       <nav>
         <ul>
-          <li>
+        <li>
+            
             <Link to="/">Home</Link>
-          </li>
+         
+      </li>
           {!props.loggedIn ? (
             <>
-              <li>
+                
+                <li>
                 <Link to="/register">Register</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
+          </li>
+             
             </>
           ) : (
             <>
-              <li>
-                <Link to="/order-form">Order Form</Link>
-              </li>
-              <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li>
+             
+           
+        
+          
+
+             
+             
             </>
           )}
         </ul>

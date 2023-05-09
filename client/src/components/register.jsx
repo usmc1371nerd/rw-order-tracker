@@ -1,4 +1,5 @@
  import React, {useState} from "react"
+ import "./register.css"
  
  
  
@@ -17,9 +18,18 @@
 
  
         <form onSubmit={handleSubmit}>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='email' id='email'></input>
-        <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" placeholder='password' id='password'></input>
-        <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" placeholder='password' id='password'></input>
+          <label>
+          Username:
+        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" id='email'></input>
+        </label>
+        <label>
+          Password:  
+        <input value={password} onChange={(e) => setPassword(e.target.value)}type="password"  id='password'></input>
+        </label>
+        <label>
+          Password:
+        <input value={password} onChange={(e) => setPassword(e.target.value)}type="password"  id='password'></input>
+        </label>
         <button type='submit' >Create</button>
         </form>
    </div>

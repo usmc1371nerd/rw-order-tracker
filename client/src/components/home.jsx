@@ -6,12 +6,17 @@ import './home.css'
 
 
 
+
 const Home = ({username}) => {
 
   
   return (
    
-    <div>  
+    <div> 
+      <div className='header'>
+   
+      </div>
+      
       <h1>{username}</h1>
 
       
