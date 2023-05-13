@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from "./header"
+import "./order-form.css"
 
 const Order = ({ username }) => {
   const history = useNavigate();
@@ -12,11 +13,13 @@ const Order = ({ username }) => {
 
   const [businessname, setBusinessname] = useState('');
   const [name, setName] = useState('');
-  const [flowertype, setFlowertype] = useState('');
-  const [flowercolor, setFlowercolor] = useState('');
-  const [flower_amount, setFlowerAmount] = useState('');
-  const [description, setDescription] = useState('');
+  const [orderFields, setOrderFields] = useState([{ flowertype: '', flowercolor: '', flower_amount: '', description: '' }]);
   const [deliverydate, setDeliverydate] = useState('');
+  
+
+  const handleOrderFieldClick = () => {
+    setOrderFields([...orderFields, { flowertype: '', flowercolor: '', flower_amount: '', description: '' }]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,20 +28,14 @@ const Order = ({ username }) => {
       
         businessname,
         name,
-        flowertype,
-        flowercolor,
-        flower_amount,
-        description,
+        orderFields,
         deliverydate,
       });
       alert('Order created successfully!');
   
       setBusinessname('');
       setName('');
-      setFlowertype('');
-      setFlowercolor('');
-      setFlowerAmount('');
-      setDescription('');
+      setOrderFields([{ flowertype: '', flowercolor: '', flower_amount: '', description: '' }]);
       setDeliverydate('');
     } catch (error) {
       alert(error.response.data.error);
@@ -46,13 +43,16 @@ const Order = ({ username }) => {
     console.log(alert)
   };
 
+    
+
+
   return (
     
     <div>
       <Header/>
       
       <h1>Welcome, {username}!</h1>
-      <form onSubmit={handleSubmit}>
+      <form method="post" action="james.p.dumas@gmail.com"  onSubmit={handleSubmit}>
    
       <br />
       <label>
@@ -65,36 +65,53 @@ const Order = ({ username }) => {
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
       <br />
-      <label>
-        Flower Type:
-        <input type="text" value={flowertype} onChange={(e) => setFlowertype(e.target.value)} />
-      </label>
+       {orderFields.map((field, index) => (
+        <div key={index} className='order-field'>
+          <label>
+            Flower Type:
+            <input type="text" value={field.flowertype} onChange={(e) => {
+              const newOrderFields = [...orderFields];
+              newOrderFields[index].flowertype = e.target.value;
+              setOrderFields(newOrderFields);
+            }} />
+          </label>
+          <br />
+          <label>
+            Flower Color:
+            <input type="text" value={field.flowercolor} onChange={(e) => {
+              const newOrderFields = [...orderFields];
+              newOrderFields[index].flowercolor = e.target.value;
+              setOrderFields(newOrderFields);
+            }} />
+          </label>
+          <br />
+          <label>
+            Flower Amount:
+            <input type="number" value={field.flower_amount} onChange={(e) => {
+              const newOrderFields = [...orderFields];
+              newOrderFields[index].flower_amount = e.target.value;
+              setOrderFields(newOrderFields);
+            }} />
+          </label>
+          <br />
+          <label>
+            Description:
+            <input className='description-input' type="text" value={field.description} onChange={(e) => {
+              const newOrderFields = [...orderFields];
+              newOrderFields[index].description = e.target.value;
+              setOrderFields(newOrderFields);
+            }} />
+          </label>
+          <br />
+        </div>
+      ))}
       <br />
-      <label>
-        Flower Color:
-        <input type="text" value={flowercolor} onChange={(e) => setFlowercolor(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Flower Amount:
-        <input type="number" value={flower_amount} onChange={(e) => setFlowerAmount(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Delivery Date:
-        <input type="date" value={deliverydate} onChange={(e) => setDeliverydate(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Create Order</button>
+      <div id='orderbtn' onClick={handleOrderFieldClick}>Add line</div>
+      <button className='create-order-btn' type="submit">Create Order</button>
     </form>
   
 
-      <button onClick={handleLogout}>Logout</button>
+      <button className='logout' onClick={handleLogout}>Logout</button>
     </div>
   );
 };

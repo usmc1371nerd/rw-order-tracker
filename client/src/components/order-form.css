@@ -1,0 +1,16 @@
+.order-field {
+    display: flex;
+    flex-direction: row;
+ 
+    
+
+}
+
+#orderbtn{
+    border: 1px solid black;
+    background-color:  white;
+
+}
+
+/* mobile format needs to be formatted somehow back to columns possibly? researching other
+order forms */

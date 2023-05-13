@@ -1,17 +1,42 @@
-button {
-    height:25px;
-    background-color: orange;
-    border: 1.5px solid black;
+
+
+nav{
+    background-color: whitesmoke;
+    display: flex;
+    height: 10vh;
+    border: 5px solid black;
+    align-items: center;
+    background-color: blue;
+    
+  
+    
 }
 
-.links {
-    background-color: blue;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 10vh;
-    border: 2px solid black;
-    align-items: center;
+nav a {
+    border: 3px solid black;
+    text-decoration: none;
+    padding: .5rem;
+    background-color:orange;
+    color: black;
+    font-size: 25px;
+      
+    
 }
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+nav li {
+    list-style-type:none;
+    margin: 5px;
+    
+
+}
+
+
+
 
 
